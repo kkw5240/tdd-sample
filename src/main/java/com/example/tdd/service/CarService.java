@@ -1,15 +1,22 @@
 package com.example.tdd.service;
 
 import com.example.tdd.domain.Car;
+import com.example.tdd.exception.CarNotFoundException;
 import com.example.tdd.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor
 public class CarService {
 
     private final CarRepository carRepository;
 
     public Car getCarDetails(String name) {
-        return carRepository.findByName(name);
+        Car car = carRepository.findByName(name);
+        if (car == null) {
+            throw new CarNotFoundException();
+        }
+        return car;
     }
 }
