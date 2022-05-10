@@ -27,5 +27,7 @@ public class IntegrationTest {
 
         // assert
         Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
+        Assertions.assertEquals(response.getBody().getName(), "prius");
+        Assertions.assertEquals(response.getBody().getType(), "hybrid");
     }
 }
