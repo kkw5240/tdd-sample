@@ -33,4 +33,11 @@ class CarServiceTest {
         Assertions.assertEquals("prius", car.getName());
         Assertions.assertEquals("hybrid", car.getType());
     }
+
+    @Test
+    void getCarDetails_whenCarNotFound() throws Exception {
+        given(carRepository.findByName("prius")).willReturn(null);
+
+        carService.getCarDetails("prius");
+    }
 }
