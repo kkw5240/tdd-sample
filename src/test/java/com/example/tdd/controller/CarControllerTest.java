@@ -35,4 +35,9 @@ public class CarControllerTest {
                 .andExpect(jsonPath("name").value("prius"))
                 .andExpect(jsonPath("type").value("hybrid"));
     }
+
+    @Test
+    void getCar_notFound() throws Exception {
+        given(carService.getCarDetails(anyString())).willThrow(new CarNotFoundException());
+    }
 }
