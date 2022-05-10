@@ -1,6 +1,7 @@
 package com.example.tdd.service;
 
 import com.example.tdd.domain.Car;
+import com.example.tdd.repository.CarRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
