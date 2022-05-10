@@ -1,6 +1,7 @@
 package com.example.tdd.controller;
 
 import com.example.tdd.domain.Car;
+import com.example.tdd.exception.CarNotFoundException;
 import com.example.tdd.service.CarService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,5 +40,8 @@ public class CarControllerTest {
     @Test
     void getCar_notFound() throws Exception {
         given(carService.getCarDetails(anyString())).willThrow(new CarNotFoundException());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/cars/prius"))
+                .andExpect(status().isNotFound());
     }
 }
