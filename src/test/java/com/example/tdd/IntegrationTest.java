@@ -26,5 +26,6 @@ public class IntegrationTest {
         ResponseEntity<Car> response = restTemplate.getForEntity("/cars/prius", Car.class);
 
         // assert
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 }
